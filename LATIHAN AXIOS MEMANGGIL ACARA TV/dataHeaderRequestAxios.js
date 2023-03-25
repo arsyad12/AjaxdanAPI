@@ -24,16 +24,18 @@ const config = { //memasukan nilai keywor kedalam fungsi konfig
 
 const request = await axios.get(`http://api.tvmaze.com/search/shows`,config)//request API sesuai config yang berisi data dari keyword
 
-// console.log(request.data.name)
 
 
-getImage(request.data) //menangkap data berdasarkan fungsi yang sudah di set dibawah
+getName(request.data); //menangkap data nama berdasarkan fungsi yang sudah di set dibawah
+
+
+getImage(request.data) //menangkap data gambar berdasarkan fungsi yang sudah di set dibawah
 
 
 form.elements.query.value = "" //mengosongkan form setelah berhasil mencari data
 
 
-})
+});
 
 
 
@@ -48,3 +50,17 @@ for (let result of shows) {
     }
 }
 }
+
+
+const getName =(shows)=>{
+   for (let result of shows) {
+     if (result.show.name) {
+        console.log(result.show.name)
+     }
+   }
+}
+
+
+
+//KESIMPULANNYA ADALAH, KARENA BERBENTUK OBJECT YANG BANYAK SEKALI SAAT MENGAMBIL DATA , 
+// WAJIB MEMBUAT FUNCTIONNYA DULU, KEMUDIAN MENGAMBIL DARI DATA YANG DI REQUEST
